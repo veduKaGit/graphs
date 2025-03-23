@@ -63,7 +63,7 @@ public:
 class Solution {
 public:
     // this function returns the LCA
-    // function returns NULL neither of p/q are present in subtree of root
+    // function returns NULL when NONE of p/q are present in subtree of root
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(root==NULL)   //base case for NULL nodes
             return NULL;
