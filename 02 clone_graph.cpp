@@ -21,6 +21,6 @@ Node* dfs(Node* curr, unordered_map<Node*, Node*>&vis){
 } 
  
 Node *Solution::cloneGraph(Node *node) {
-    unordered_map<Node*, Node*>vis;  //vis is NOT array here
+    unordered_map<Node*, Node*>vis;  //vis is NOT array here (unlike normal dfs)
     return dfs(node, vis);
 }
