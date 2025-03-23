@@ -15,12 +15,12 @@ Node* dfs(Node* curr, unordered_map<Node*, Node*>&vis){
             to_visit.push_back(vis[x]);         //our clone node
     }
     
-    clone->neighbors = to_visit;          //imp
+    clone->neighbors = to_visit;          
     
-    return clone;                        //imp
+    return clone;                        
 } 
  
 Node *Solution::cloneGraph(Node *node) {
-    unordered_map<Node*, Node*>vis;
+    unordered_map<Node*, Node*>vis;  //vis is NOT array here
     return dfs(node, vis);
 }
