@@ -12,7 +12,7 @@ Node* dfs(Node* curr, unordered_map<Node*, Node*>&vis){
         if(vis.find(x) == vis.end())
             to_visit.push_back(dfs(x, vis));    //dfs
         else
-            to_visit.push_back(vis[x]);         //IMP => vis[x] => our clone node
+            to_visit.push_back(vis[x]);         //IMP => vis[x] => already cloned node
     }
     
     clone->neighbors = to_visit;          
