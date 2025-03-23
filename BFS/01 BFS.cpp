@@ -30,7 +30,7 @@ void BFS(vector<int> adj[], int s, bool visited[])
 		{
 			 if(visited[v]==false)
 			 {
-			      visited[v]=true;
+			      visited[v]=true;  //make "true" when we push into queue
 			      q.push(v);
 			 }
 		} 
