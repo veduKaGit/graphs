@@ -63,22 +63,24 @@ public:
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(root==NULL)
+        if(root==NULL)   //base case for NULL nodes
             return NULL;
         
-        if(root==p || root==q)
+        if(root==p || root==q)  // base case => when we hit p or q => uske subtree m nahi jana h
             return root;
-        
+
         TreeNode* l = lowestCommonAncestor(root->left, p, q);
         TreeNode* r = lowestCommonAncestor(root->right, p, q);
-        
+
+        // if both l and r are NOT null => means l/r have p/q in their subtree
+        // return ROOT in that case => LCA
         if(l!=NULL && r!=NULL)
-            return root;   //imp
+            return root;
         
         if(r!=NULL)
-            return r;     //imp...not root
+            return r;     //imp...NOT root
         if(l!=NULL)
-            return l;    //imp...not root
+            return l;    //imp...NOT root
         
         return NULL;
     }
