@@ -15,7 +15,7 @@
 class Solution {
 public:
     int fun(int st, vector<vector<int>>&adj){
-        int ret = INT_MAX, n = adj.size(), cnt = 0;
+        int ret = INT_MAX, n = adj.size();
 
         queue<int>q;
         vector<int>dist(n, INT_MAX);
