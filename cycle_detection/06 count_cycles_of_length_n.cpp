@@ -10,12 +10,11 @@
 
 
 
-// Number of vertices
+
 const int V = 5;
 
 void DFS(bool graph[][V], bool marked[], int n, int vert, int start, int& count)
 {
-	// mark the vertex vert as visited
 	marked[vert] = true;
 
 	// if the path of length (n-1) is found
@@ -30,21 +29,17 @@ void DFS(bool graph[][V], bool marked[], int n, int vert, int start, int& count)
 		return;
 	}
 
-	// For searching every possible path of length (n-1)
 	for (int i = 0; i < V; i++){
 		if (!marked[i] && graph[vert][i])
-			// DFS for searching path by decreasing length by 1
 			DFS(graph, marked, n - 1, i, start, count);
 	}
 
-	// marking vert as unvisited to make it usable again.
 	marked[vert] = false;
 }
 
 // Counts cycles of length N in an undirected and connected graph.
 int countCycles(bool graph[][V], int n)
 {
-	// all vertex are marked un-visited initially.
 	bool marked[V];
 	memset(marked, 0, sizeof(marked));
 
