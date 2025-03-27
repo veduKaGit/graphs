@@ -14,7 +14,7 @@
 
 
 // NOTE: since this is SHORTEST cycle => we use BFS
-// if we have similar ques for LONGEST cycle => we use DFS
+// if we have ques for LONGEST cycle => we use DFS (similar logic though)
 
 
 class Solution {
