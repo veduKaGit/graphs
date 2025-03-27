@@ -12,6 +12,11 @@
 //time : O(V * (V+E))
 
 
+
+// NOTE: since this is SHORTEST cycle => we use BFS
+// if we have similar ques for LONGEST cycle => we use DFS
+
+
 class Solution {
 public:
     int fun(int st, vector<vector<int>>&adj){
