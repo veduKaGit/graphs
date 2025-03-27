@@ -23,7 +23,8 @@ public:
 
         q.push(st);
         dist[st] = 0;
-
+        parent[st] = -1;
+        
         while(q.size()>0){
             int node = q.front(), par = parent[node];
             q.pop();
