@@ -30,7 +30,7 @@ public:
 
             for(auto x:adj[node]){
                 if(dist[x]!=INT_MAX && x!=par){
-                    ret = min(ret, dist[node]+dist[x]+1);
+                    ret = min(ret, dist[node] + dist[x] + 1); //imp
                 }else if(dist[x]==INT_MAX){
                     dist[x] = dist[node]+1;
                     parent[x] = node;
