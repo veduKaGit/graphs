@@ -28,13 +28,13 @@ public:
             int node = q.front(), par = parent[node];
             q.pop();
 
-            for(auto x:adj[node]){
-                if(dist[x]!=INT_MAX && x!=par){
-                    ret = min(ret, dist[node] + dist[x] + 1); //imp
-                }else if(dist[x]==INT_MAX){
-                    dist[x] = dist[node]+1;
-                    parent[x] = node;
-                    q.push(x);
+            for(auto nbr : adj[node]){
+                if(dist[nbr] != INT_MAX && nbr != par){  // already visited AND not parent
+                    ret = min(ret, dist[node] + dist[nbr] + 1);
+                }else if(dist[nbr] == INT_MAX){  //not visited
+                    dist[nbr] = dist[node]+1;
+                    parent[nbr] = node;
+                    q.push(nbr);
                 }
             }
         }
