@@ -47,8 +47,7 @@ int countCycles(bool graph[][V], int n)
 	int count = 0;
 	for (int i = 0; i < V; i++) {
 		DFS(graph, marked, n - 1, i, i, count);
-		// ith vertex is marked as visited and will not be visited again.
-		marked[i] = true;
+		marked[i] = true;  // VVIMP => ith vertex is marked as visited and will not be visited again => won't count the same cycle again
 	}
 
 	return count / 2;  //since every vertex -> finds 2 duplicate cycles that it forms. example 0th vertex => 0->1->2 and 0->2->1 (for a cycle of length 3)
