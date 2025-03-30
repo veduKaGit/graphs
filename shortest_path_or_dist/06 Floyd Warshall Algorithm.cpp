@@ -29,6 +29,8 @@
 // So, if we find that the cost of reaching any node from itself is < 0 => graph has a negative cycle.
 
 
+// for a particular k => dp[i][j] = min dist b/w nodes i,j  using (0, 1, 2... k-1) as intermediate nodes
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -39,14 +41,13 @@ public:
 		int n = matrix.size();
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				if (matrix[i][j] == -1) {
+				if (matrix[i][j] == -1) 
 					matrix[i][j] = 1e9;  //~INFINITE if no edge exists
-				}
 				if (i == j) 
-          matrix[i][j] = 0;  //dist from itself
+	  				matrix[i][j] = 0;  //dist from itself
 			}
 		}
-
+	
 		for (int k = 0; k < n; k++) {  //VVIMP => K wala loop bahar
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
@@ -54,18 +55,18 @@ public:
 				}
 			}
 		}
-
-
+	
+	
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-        if (i==j && dist[i][j]<0)
-          cout<<"detected a -ive wt cycle"<<endl;  //cycle detect
-        
+				if (i==j && dist[i][j]<0)
+	  				cout<<"detected a -ive wt cycle"<<endl;  //cycle detect
+	
 				if (matrix[i][j] == 1e9) //reset to INFINITY
 					matrix[i][j] = -1;
 			}
 		}
-    
+	
 	}
 };
 
