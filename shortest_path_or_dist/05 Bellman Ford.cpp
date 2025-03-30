@@ -2,7 +2,7 @@
 
 // time complexity : O(VE), which is more than Dijkstra. 
 
-// works for Directed graphs ONLY (no actually)
+// works for Directed graphs ONLY? (actually NOT)
 
 // for UNidrected graphs => if we have an edge from u-v with weight wt
 // add 2 directed edges (from u->v and v->u with weight wt)
