@@ -22,7 +22,7 @@
 // 2. algo is to relax ALL the edges for N-1( N = no. of nodes) times sequentially.
 //    After N-1 iterations, we should have minimized the distance to every node.
 
-//    why this works: algorithm will minimize the distance of the ith node in the ith iteration 
+//    why this works: algorithm will minimize the distance of the ith node in the ith iteration => **VVIMP**
 //    like dist[1] will be updated in the 1st iteration, dist[2] will be updated in the 2nd iteration, and so on.
 //    In a graph of N nodes => we will take at most N-1 edges to reach from the first to the last node.
 //    Thus, we need exact N-1 iterations. It is impossible to draw a graph that takes more than N-1 edges to reach any node. 
