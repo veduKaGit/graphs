@@ -1,6 +1,6 @@
 // works for: ((directed OR undirected) && cyclic graphs  &&  weighted  &&  -ive path distances)
 
-// time complexity of Bellman-Ford is O(VE), which is more than Dijkstra. Only advantage over Dijkstra is the ability to handle -ive weights.
+// time complexity : O(VE), which is more than Dijkstra. Only advantage over Dijkstra is the ability to handle -ive weights.
 
 
 //SUPER IMP: 1. it works for -ive weights, BUT NOT for -ive weight CYCLES
