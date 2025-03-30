@@ -1,6 +1,7 @@
-// Whenever we have UNdirected graph with a -ive weight
-// We can NEVER find shortest dist
-// BOTH dijkstra, Bellman Ford DO NOT work
+// when we have -ive weight edge (directed or UNdirected):
+// Bellman ford works
+// Dijkstra fails
 
-//if we have -ive edge bw u and v
-//then u and/or v will always be in the queue/priority_queue => TLE
+// when we have -ive weight cycle:
+// Bellman ford detects it
+// Dijkstra gives TLE
