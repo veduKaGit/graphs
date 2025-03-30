@@ -1,3 +1,5 @@
+// works for directed/UNdirected + cycles + ONLY positive wt edges
+
 //A few things to take care of:
 // 1. No visited array!!!!because here we may traverse the same element multiple times (dont worry, we push new item only when if statement is true)
 // 2. use MIN heap
