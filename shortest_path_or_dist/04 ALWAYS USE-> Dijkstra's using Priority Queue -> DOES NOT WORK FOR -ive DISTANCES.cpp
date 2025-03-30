@@ -4,6 +4,7 @@
 // 3. min heap should be of a PAIR (distance,vectex)...since then the top element will be according to the SMALLEST distance
 // 4. here the adj should be of the form vector<vector<pair<int,int>>>adj.....basically vector of vector of a pair
 
+// O(E log V), where E is the number of edges and V is the number of vertices in the graph
 
 #include<bits/stdc++.h>
 using namespace std;
