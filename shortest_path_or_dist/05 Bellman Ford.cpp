@@ -1,11 +1,12 @@
 // works for: ((directed OR undirected) && cyclic graphs  &&  weighted  &&  -ive path distances)
 
-// time complexity : O(VE), which is more than Dijkstra. Only advantage over Dijkstra is the ability to handle -ive weights.
+// time complexity : O(VE), which is more than Dijkstra. 
 
+// works for Directed graphs ONLY (no actually)
 
-//SUPER IMP: 1. it works for -ive weights, BUT NOT for -ive weight CYCLES
-//           2. Bellman-Ford does NOT work with UNdirected graph with negative edges as it will declared as negative cycle.
-
+// for UNidrected graphs => if we have an edge from u-v with weight wt
+// add 2 directed edges (from u->v and v->u with weight wt)
+// now it'll work
 
 // Algorithm 
 // Input: Graph and a source vertex src 
