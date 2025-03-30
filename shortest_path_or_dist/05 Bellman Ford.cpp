@@ -1,6 +1,8 @@
+// very simple => just read once
+
 // works for: ((directed OR undirected) && cyclic graphs  &&  weighted  &&  -ive path distances)
 
-// time complexity : O(VE), which is more than Dijkstra. 
+// time complexity : O(V*E)
 
 // works for Directed graphs ONLY? (actually NOT)
 
@@ -9,18 +11,28 @@
 // add 2 directed edges (from u->v and v->u with weight wt)
 // now it'll work
 
-// Algorithm 
-// Input: Graph and a source vertex src 
-// Output: Shortest distance to all vertices from src. If there is a negative weight cycle, 
-//         then shortest distances are not calculated, negative weight cycle is reported.
-// 1) This step initializes distances from the source to all vertices as infinite and distance to the source itself as 0. 
-//    Create an array dist[] of size |V| with all values as infinite except dist[src] where src is source vertex.
-// 2) This step calculates shortest distances. Do following |V|-1 times where |V| is the number of vertices in given graph. 
-// …..a) Do following for each edge u-v 
-// ………………If dist[v] > dist[u] + weight of edge uv, then update dist[v] 
-// ………………….dist[v] = dist[u] + weight of edge uv
-// 3) This step reports if there is a negative weight cycle in graph. Do following for each edge u-v 
-// ……If dist[v] > dist[u] + weight of edge uv, then “Graph contains negative weight cycle” 
+
+//algo:
+// 1. first we'll define "relax edges":
+//    we have edge u->v with weight wt. 
+//    dist[u] = the shortest distance to reach node u found UNTIL NOW (similarly dist[v])
+//    If: (dist[u] + wt) < dist[v] => we will update the value of dist[v] = (dist[u] + wt) 
+//    This process of updating the distance is called the relaxation of edges.
+
+// 2. algo is to relax ALL the edges for N-1( N = no. of nodes) times sequentially.
+//    After N-1 iterations, we should have minimized the distance to every node.
+
+//    why this works: algorithm will minimize the distance of the ith node in the ith iteration 
+//    like dist[1] will be updated in the 1st iteration, dist[2] will be updated in the 2nd iteration, and so on.
+//    In a graph of N nodes => we will take at most N-1 edges to reach from the first to the last node.
+//    Thus, we need exact N-1 iterations. It is impossible to draw a graph that takes more than N-1 edges to reach any node. 
+
+// 3. How to detect a -ive cycle in the graph?
+//    if we keep on rotating inside a -ive cycle, the path weight will be decreased in every iteration. 
+//    But according to our intuition, after N-1 iterations no relaxation of edges is possible.
+//    To check for a negative cycle, we will relax the edges one more time after the completion of N-1 iterations. 
+//    If in that Nth iteration, it is found that further relaxation of any edge is possible, we can conclude that the graph has a negative cycle. 
+
 
 
 #include <bits/stdc++.h>
