@@ -4,7 +4,8 @@
 
 // works for Directed graphs ONLY? (actually NOT)
 
-// for UNidrected graphs => if we have an edge from u-v with weight wt
+// for UNidrected graphs => make it directed
+// if we have an edge from u-v with weight wt
 // add 2 directed edges (from u->v and v->u with weight wt)
 // now it'll work
 
