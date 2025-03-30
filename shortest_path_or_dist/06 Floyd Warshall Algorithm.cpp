@@ -29,7 +29,7 @@
 // So, if we find that the cost of reaching any node from itself is < 0 => graph has a negative cycle.
 
 
-// for a particular k => dp[i][j] = min dist b/w nodes i,j  using (0, 1, 2... k-1) as intermediate nodes
+// for a particular k => dp[i][j] = min dist b/w nodes i,j  using (0, 1, 2... k) as intermediate nodes
 
 #include <bits/stdc++.h>
 using namespace std;
