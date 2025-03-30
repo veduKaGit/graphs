@@ -1,6 +1,7 @@
 // when we have -ive weight edge (directed or UNdirected):
 // Bellman ford works
 // Dijkstra fails
+// Flloyd warshall works
 
 
 // -ive wt cycle is when SUM of paths in cycle < 0 => IMP
@@ -13,3 +14,4 @@
 // Time complexity:
 // Bellman Ford: O(V*E)
 // Dijkstra: O(E * logV)
+// Flloyd Warshall O(V^3)
