@@ -34,8 +34,8 @@ public:
     vector<vector<int>>v;  //parent array => we will use precomputation on this
     //v[x][i] = 2^i ancestor of node x => IMP => 2^i and NOT i
 
-    TreeAncestor(int n, vector<int>& parent) {  //parent array is given => 1st parent of each node
-        vector<vector<int>> par(n, vector<int>(20, -1));
+    TreeAncestor(int n, vector<int>& parent) {
+        vector<vector<int>> par(n, vector<int>(20, -1));  //initialise all as -1
         
         for (int i = 0; i < n; i++) 
             par[i][0] = parent[i];  //2^0 OR 1st parent of each node
@@ -44,10 +44,10 @@ public:
         //if outer loop was 'i', and inner loop was 'j' => calculates all ancestors for a node, then i++ => works ONLY when (i > parent[i)
         for (int j = 1; j < 20; j++) {  
             for (int i = 0; i < n; i++) {
-                if (par[i][j - 1] == -1)  //obvio
+                if (par[i][j - 1] == -1)
                     par[i][j] = -1;
                 else 
-                    par[i][j] = par[par[i][j - 1]][j - 1]; //IMP && obvio  => par[i][j] = 2^j parent of node i
+                    par[i][j] = par[par[i][j - 1]][j - 1]; //par[i][j] = 2^j parent of node i
             }
         }
         
