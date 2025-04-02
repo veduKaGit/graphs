@@ -35,7 +35,7 @@ public:
     //v[x][i] = 2^i ancestor of node x => IMP => 2^i and NOT i
 
     TreeAncestor(int n, vector<int>& parent) {  //parent array is given => 1st parent of each node
-        vector<vector<int>> par(n, vector<int>(20));
+        vector<vector<int>> par(n, vector<int>(20, -1));
         
         for (int i = 0; i < n; i++) 
             par[i][0] = parent[i];  //2^0 OR 1st parent of each node
