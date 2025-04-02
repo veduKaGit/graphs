@@ -63,9 +63,7 @@ struct DisjointSets
 		if (u == parent[u])
 			return parent[u];
 		
-		if (u != parent[u])
-			parent[u] = find(parent[u]);
-		return parent[u];
+		return parent[u] = find(parent[u]);
 	}
 
 	void merge(int x, int y)    // Union by rank
