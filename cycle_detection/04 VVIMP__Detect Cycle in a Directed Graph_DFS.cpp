@@ -1,5 +1,12 @@
-//no need to check for parent like in undirected graph
-//because its a directed graph here....so connection is only 1 way...not 2 way
+// 2 VVIMP THINGS:
+
+// 1. no need to check for parent like in undirected graph
+//    because its a directed graph here....so connection is only 1 way...not 2 way
+
+// 2. Use recursion stack (vector) => only visited array will not be enough
+//    example: 3->0->1->2 is our graph and we only use visited array
+//    if we start from 0 => 0, 1, 2 are marked visited
+//    when we do dfs from 3 now => 0 is already visited => it will say cycle exists
 
 #include<bits/stdc++.h> 
 using namespace std; 
