@@ -35,7 +35,7 @@ public:
             q.pop();
 
             for(auto nbr : adj[node]){
-                if(dist[nbr] != INT_MAX && nbr != par){  // already visited AND not parent
+                if(dist[nbr] != INT_MAX && nbr != par){  // already visited AND not parent => everything same as BFS => just this is extra
                     ret = min(ret, dist[node] + dist[nbr] + 1);
                 }else if(dist[nbr] == INT_MAX){  //not visited
                     dist[nbr] = dist[node]+1;
