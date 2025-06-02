@@ -1,26 +1,22 @@
 //clone wale mei always use unordered_map
-//we can NOT use unordered_set => because for loop mei else wale part mei we need to push our current node => NOT possible with set
 
-Node* dfs(Node* curr, unordered_map<Node*, Node*>&vis){
-    
-    Node* clone = new Node(curr->val);
-    
-    vis[curr] = clone;                  //imp
-    vector<Node *>to_visit;
-    
-    for(auto x:curr->neighbors){
-        if(vis.find(x) == vis.end())
-            to_visit.push_back(dfs(x, vis));    //dfs
-        else
-            to_visit.push_back(vis[x]);         //IMP => vis[x] => already cloned node
+class Solution {
+public:
+    void dfs(Node* node, unordered_map<Node*, Node*>& m) {
+        if (m.find(node) != m.end()) return;
+
+        m[node] = new Node(node->val);
+        for (auto neighbor : node->neighbors) {
+            dfs(neighbor, m);
+            m[node]->neighbors.push_back(m[neighbor]);  //imp => do after dfs
+        }
     }
-    
-    clone->neighbors = to_visit;          
-    
-    return clone;                        
-} 
- 
-Node *Solution::cloneGraph(Node *node) {
-    unordered_map<Node*, Node*>vis;  //vis is NOT array here (unlike normal dfs)
-    return dfs(node, vis);
-}
+
+    Node* cloneGraph(Node* node) {
+        if (node == NULL) return NULL;
+
+        unordered_map<Node*, Node*> m;  //acts as vis array
+        dfs(node, m);
+        return m[node];
+    }
+};
