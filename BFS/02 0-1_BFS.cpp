@@ -1,9 +1,9 @@
-https://www.youtube.com/watch?app=desktop&v=SQOQ99stCas&ab_channel=Luv
-
 // graph where every edge has weight as either 0 or 1. 
 // A source vertex is also given in the graph. 
 // Find the shortest path from source vertex to every other vertex. 
 
+
+===== VVIMP COMMENT, MUST READ!! DONT IGNNORE =====
 
 // In this we will NOT use bool array to mark visited nodes (like we did in normal BFS)
 // but at each step we will check for the optimal distance condition. 
