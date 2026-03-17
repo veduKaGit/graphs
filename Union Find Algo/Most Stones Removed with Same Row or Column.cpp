@@ -5,7 +5,7 @@ Time complexity of union-find approach: O(N) => BETTER!!!!
 // On a 2D plane, we place n stones at some integer coordinate points. Each coordinate point may have at most one stone.
 
 // A stone can be removed if it shares either the same row or the same column as another stone that has not been removed.
-means that if 1 stone is @ (0,0) and the other one is @ (100,0), then also 1 of them will be removed.
+// means that if 1 stone is @ (0,0) and the other one is @ (100,0), then also 1 of them will be removed.
 
 // Given an array stones of length n where stones[i] = [xi, yi] represents the location of the ith stone, 
 // return the largest possible number of stones that can be removed.
@@ -23,87 +23,35 @@ means that if 1 stone is @ (0,0) and the other one is @ (100,0), then also 1 of 
 
 
 // SOLUTION:
-
 // One sentence to solve:
 // Connected stones can be reduced to 1 stone,
 // the maximum stones can be removed = stones number - islands number.
 // so just count the number of "islands".
 
+// as mentioned earlier, we can have 2 approaches to find the number of islands
+// union-find approach: O(N) time
+// dfs approach: 0N(N^2) time
 
-// 1. Connected stones
-// Two stones are connected if they are in the same row or same col.
-// Connected stones will build a connected graph.
-// It's obvious that in one connected graph,
-// we can't remove all stones.
-
-// We have to have one stone left.
-// An intuition is that, in the best strategy, we can remove until 1 stone.
-
-// I guess you may reach this step when solving the problem.
-// But the important question is, how?
-
-
-// 2. A failed strategy
-// Try to remove the least degree stone
-// Like a tree, we try to remove leaves first.
-// Some new leaf generated.
-// We continue this process until the root node left.
-
-// However, there can be no leaf.
-// When you try to remove the least in-degree stone,
-// it won't work on this "8" like graph:
-// [[1, 1, 0, 0, 0],
-// [1, 1, 0, 0, 0],
-// [0, 1, 1, 0, 0],
-// [0, 0, 1, 1, 1],
-// [0, 0, 0, 1, 1]]
-
-// The stone in the center has least degree = 2.
-// But if you remove this stone first,
-// the whole connected stones split into 2 parts,
-// and you will finish with 2 stones left.
+// EXPLAINING THE UNION-FIND APPROACH:
+// You can remove a stone only if: there exists another stone in the same row or column
+// So removal depends on connections.
+// Stones are connected if they share row/column
+// You can keep removing stones as long as the component has >1 nodes
+// NOW:
+// 1. Model it as a graph
+//    Each stone = node
+//    Edge between two stones if: same row OR same column
+//    Now you get a graph with multiple connected components
+// 2. In one connected component of size k: You can remove k - 1 stones
+//    You can keep removing until only 1 stone remains
+// 3. Why DSU works PERFECTLY here
+//    We don’t care about order of removals
+//    We only care about: which stones are connected, and how many independent groups exist
+// 4. BUT which elements should we union/merge into one group?
+//    since 2 stones are in a group when they share any of row/column
+//    so, for each stone, we merge/union over (row, column+OFFSET)
+//    so that when a new stone comes with a matching row/column => its added to that group
   
-
-// 3. A good strategy: Count the number of islands
-// We call a connected graph as an island.
-// One island must have at least one stone left.
-// The maximum stones can be removed = stones number - islands number
-
-// The whole problem is transferred to:
-// What is the number of islands?
-
-// You can show all your skills on a DFS implementation,
-// and solve this problem as a normal one.
-
-
-// 4. Search on the index, not the points
-// When we search on points,
-// we alternately change our view on a row and on a col.
-
-// We think:
-// a row index, connect two stones on this row
-// a col index, connect two stones on this col.
-
-// In another view：
-// A stone, connect a row index and col.
-
-// Have this idea in mind, the solution can be much simpler.
-// The number of islands of points,
-// is the same as the number of islands of indexes.
-
-
-// 5. Union-Find
-// I use union find to solve this problem.
-// As I mentioned, the elements are not the points, but the indexes.
-
-// a. for each point, union two indexes.
-// b. return (points number - union number)
-
-
-// Complexity
-// union and find functions have worst case O(N), amortize O(1)
-// The whole union-find solution with path compression,
-// has O(N) Time, O(N) Space
 
 
 // APPROACH_1 =>
