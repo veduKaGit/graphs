@@ -59,36 +59,49 @@ Time complexity of union-find approach: O(N) => BETTER!!!!
 
 class Solution {
 public:
-     int removeStones(vector<vector<int>>& stones) {
-        for (int i = 0; i < stones.size(); ++i)
-            uni(stones[i][0], ~stones[i][1]);   //why negation ???? => to make x and y coordinates in diff dimensions => we know : [ ~a = -(a+1) ]
-                                                //earlier 0 <= x, y <= 10^4  => now x ka range is same => -10^4 -1 <= y <= -1
-        return stones.size() - islands;
+    int find(int i, vector<int>&par){
+        if(i==par[i])
+            return i;
+        return par[i] = find(par[i], par);
     }
+    void union_fun(int x, int y, vector<int>&rank, vector<int>&par){
+        int px = find(x, par);
+        int py = find(y, par);
 
-    unordered_map<int, int> f;
-    int islands = 0;
-
-    int find(int x) {
-        if (!f.count(x))
-        {
-            f[x] = x; 
-            islands++;
+        if(rank[px] > rank[py]){
+            par[py] = px;
+        }else if(rank[py] > rank[px]){
+            par[px] = py;
+        }else{
+            par[px] = py;
+            rank[py]++;
         }
-        if (x != f[x]) 
-            f[x] = find(f[x]);
+    }
+    int removeStones(vector<vector<int>>& stones) {
+        int offset = 1e4+1;
+        set<int>islands;
+
+        vector<int>rank(2*1e4 + 5, 0);
+
+        // here initialise as -1 beacuse NOT all numbers in the range [0, 2*1e4+4] are in stones arr
+        // we have added a lot extra stones => which will result in extra islands when we count
+        // we set par inside the for loop when we do the union
+        vector<int>par(2*1e4 + 5, -1);
         
-        return f[x];
-    }
-
-    void uni(int x, int y) {
-        x = find(x);
-        y = find(y);
-        if (x != y) 
-        {
-            f[x] = y;
-            islands--;
+        for(auto x:stones){
+            if(par[x[0]]==-1)
+                par[x[0]] = x[0];
+            if(par[x[1]+offset]==-1)
+                par[x[1]+offset] = x[1]+offset;
+                
+            union_fun(x[0], x[1]+offset, rank, par);
         }
+
+        for(auto x:par)
+            if(x!=-1)
+                islands.insert(find(x, par));  // VVIMP!!! => find(x, par), NOT par[x]
+                
+        return stones.size() - islands.size();
     }
 };
 
