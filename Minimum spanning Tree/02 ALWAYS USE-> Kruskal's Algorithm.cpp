@@ -13,8 +13,10 @@
 
 // Time complexity is O(E log E), E being the number of edges
 // why so? => 
-// sort all edges by weight: O(E log E)
-// union-find: With path compression + union by rank: O(1) => so for all edges => O(E)
+// 1. sort all edges by weight: O(E log E)
+// 2. union-find: With path compression + union by rank: 
+//		O(1) => bcz of inverse ackermann function
+// 		so for all E edges => O(E)
 // total: O(E) + O(E log E)
 
 // NOTE:
