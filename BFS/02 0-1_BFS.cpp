@@ -56,6 +56,7 @@ void zeroOneBFS(int src)
 		for (int i=0; i<edges[v].size(); i++)
 		{
 			// checking for the optimal distance
+			// push in queue ONLY when shortest distance to node is relaxed by the previous node
 			if (dist[edges[v][i].to] > dist[v] + edges[v][i].weight)
 			{
 				dist[edges[v][i].to] = dist[v] + edges[v][i].weight;
