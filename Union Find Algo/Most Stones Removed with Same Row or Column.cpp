@@ -30,7 +30,7 @@ Time complexity of union-find approach: O(N) => BETTER!!!!
 
 // as mentioned earlier, we can have 2 approaches to find the number of islands
 // union-find approach: O(N) time
-// dfs approach: 0N(N^2) time
+// dfs approach: O(N^2) time
 
 // EXPLAINING THE UNION-FIND APPROACH:
 // You can remove a stone only if: there exists another stone in the same row or column
