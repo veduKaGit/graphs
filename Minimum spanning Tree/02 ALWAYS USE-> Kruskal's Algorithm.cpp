@@ -11,7 +11,11 @@
 // The algorithm is a Greedy Algorithm. 
 // The Greedy Choice is to pick the smallest weight edge that does not cause a cycle in the MST(min spanning tree) constructed so far. 
 
-// Time complexity is O(E log V), V being the number of vertices.
+// Time complexity is O(E log E), E being the number of edges
+// why so? => 
+// sort all edges by weight: O(E log E)
+// union-find: With path compression + union by rank: O(1) => so for all edges => O(E)
+// total: O(E) + O(E log E)
 
 #include<bits/stdc++.h>
 using namespace std;
