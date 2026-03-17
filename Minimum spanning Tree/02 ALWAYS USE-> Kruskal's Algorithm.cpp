@@ -17,6 +17,15 @@
 // union-find: With path compression + union by rank: O(1) => so for all edges => O(E)
 // total: O(E) + O(E log E)
 
+// NOTE:
+// if we think deeply, why does this greedy soln even work?
+// Imagine splitting the graph into two groups A and B via a “cut”.
+// There may be many edges crossing between these two groups (A ----- cut ----- B)
+// If you want to connect these two components in the cheapest way, what should you pick?
+// Obviously the minimum weight edge between them.
+// If you pick anything else: You're paying more unnecessarily, So it can't be part of an optimal solution
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
