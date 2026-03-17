@@ -43,7 +43,8 @@ Time complexity of union-find approach: O(N) => BETTER!!!!
 //    Edge between two stones if: same row OR same column
 //    Now you get a graph with multiple connected components
 // 2. In one connected component of size k: You can remove k - 1 stones
-//    You can keep removing until only 1 stone remains
+//    You can keep removing until only 1 stone remains in that component
+//    so final ans will be (total_stones - num_islands)
 // 3. Why DSU works PERFECTLY here
 //    We don’t care about order of removals
 //    We only care about: which stones are connected, and how many independent groups exist
