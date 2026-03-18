@@ -14,8 +14,8 @@ class Solution {
         // vis => tells us ALL nodes visited till now 
         // rec => tells us nodes visited in the CURRENT dfs call
         // (example when we start with node 0 for 3->0->1->2)
-        // after this dfs call 0, 1, 2 => vis will be true
-        // but for 0, 1, 2 => rec will be false
+        // after this dfs call {0, 1, 2} => vis will be true
+        // after this dfs call {3, 0, 1, 2}=> rec will be false
         vis[node] = true; 
         rec[node] = true;
         
