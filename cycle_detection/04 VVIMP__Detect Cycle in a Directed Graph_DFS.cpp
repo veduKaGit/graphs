@@ -8,61 +8,45 @@
 //    if we start from 0 => 0, 1, 2 are marked visited
 //    when we do dfs from 3 now => 0 is already visited => it will say cycle exists
 
-#include<bits/stdc++.h> 
-using namespace std; 
-
-bool DFSRec(vector<int> adj[], int s,bool visited[], bool recSt[]) 
-{ 	
-    visited[s]=true;
-    recSt[s]=true;
-    
-    for(int u:adj[s])
-    {
-        if(visited[u]==false && DFSRec(adj,u,visited,recSt)==true)//check for immidiate NON visited descendant
-                {return true;}
-        else if(recSt[u]==true) //if already one of the descendants is in the recursion call stack, it means a back edge from descendant to ancestor, means theres a cycle
-            {return true;}
-    }
-    recSt[s]=false; //once all the descendants are visited, remove it from the call stack
-    return false;
-}
-
-bool DFS(vector<int> adj[], int V){
-    bool visited[V]; 
-	for(int i=0;i<V; i++) 
-		visited[i] = false;
-	
-	bool recSt[V]; //array to store if a particular vertex is in the recursion call stack 
-	for(int i=0;i<V; i++) 
-		recSt[i] = false;
-		
-    for(int i=0;i<V;i++){
-        if(visited[i]==false)
-            if(DFSRec(adj,i,visited,recSt)==true)
+class Solution {
+  public:
+    bool dfs(int node, vector<bool>&rec, vector<bool>&vis, vector<vector<int>>&adj){
+        // vis => tells us ALL nodes visited till now 
+        // rec => tells us nodes visited in the CURRENT dfs call
+        // (example when we start with node 0 for 3->0->1->2)
+        // after this dfs call 0, 1, 2 => vis will be true
+        // but for 0, 1, 2 => rec will be false
+        vis[node] = true; 
+        rec[node] = true;
+        
+        for(auto x: adj[node]){
+            if(vis[x] == false){ // x never visited before
+                if(dfs(x, rec, vis, adj) == true)
+                    return true;
+            }else if(rec[x] == true){ // x already visited in the CURRENT dfs call
                 return true;
+            }
+        }
+        
+        rec[node] = false; // VVIMP => reset to false
+        return false;
     }
-    return false;
-}
-
-void addEdge(vector<int> adj[], int u, int v){
-    adj[u].push_back(v);
-}
-
-int main() 
-{ 
-	int V=6;
-	vector<int> adj[V];
-	addEdge(adj,0,1); 
-	addEdge(adj,2,1); 
-	addEdge(adj,2,3); 
-	addEdge(adj,3,4); 
-	addEdge(adj,4,5);
-	addEdge(adj,5,3);
-
-	if(DFS(adj,V))
-	    cout<<"Cycle found";
-	else
-	    cout<<"No cycle found";
-
-	return 0; 
-} 
+    bool isCyclic(int V, vector<vector<int>> &edges) {
+        vector<vector<int>>adj(V);
+        
+        for(auto x:edges)
+            adj[x[0]].push_back(x[1]);
+        
+        vector<bool>rec(V, false);
+        vector<bool>vis(V, false);
+        
+        for(int i=0;i<V;i++){
+            if(vis[i] == false){
+                if(dfs(i, rec, vis, adj) == true)
+                    return true;
+            }
+        }
+        
+        return false;
+    }
+};
