@@ -27,18 +27,16 @@ void topologicalSort(vector<int> adj[], int V)
             q.push(i); 
 
     int count=0;  //exact same as topological/khans algo...just this count variable is extra
-    while (!q.empty()) 
-    { 
+    while (!q.empty()) { 
         int u = q.front(); 
         q.pop(); 
+		count++;  //counting the number of vertices popped 
   
-        for (int x: adj[u]) 
-	{
-		in_degree[x]--;
-		if (in_degree[x] == 0) 
-                    q.push(x); 
-	}
-        count++;  //counting the number of vertices popped 
+        for (int x: adj[u]) {
+			in_degree[x]--;
+			if (in_degree[x] == 0) 
+	                    q.push(x); 
+		}
     } 
 	
     if (count != V) {//whenever theres a cycle, surely (count < V), because the vertices of the cycle will always have (indegree > 0)
