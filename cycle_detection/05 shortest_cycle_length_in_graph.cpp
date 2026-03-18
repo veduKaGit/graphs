@@ -33,16 +33,16 @@ public:
         parent[st] = -1;
         
         while(q.size()>0){
-            int node = q.front(), par = parent[node];
+            int node = q.front();
             q.pop();
 
             for(auto nbr : adj[node]){
-                if(dist[nbr] != INT_MAX && nbr != par){  // already visited AND not parent => whole code same as BFS => just this logic is extra
-                    ret = min(ret, dist[node] + dist[nbr] + 1);
-                }else if(dist[nbr] == INT_MAX){  //not visited
+                if(dist[nbr] == INT_MAX){  //not visited
                     dist[nbr] = dist[node]+1;
                     parent[nbr] = node;
                     q.push(nbr);
+                }else if(nbr != parent[node]){  // already visited AND not parent => whole code same as BFS => just this logic is extra
+                    ret = min(ret, dist[node] + dist[nbr] + 1);
                 }
             }
         }
