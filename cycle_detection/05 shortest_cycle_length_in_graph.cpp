@@ -6,6 +6,8 @@
 // find shortest cycle length
 
 //approach->
+since shortest path problem => DONT even think of dfs !!! => not useful for shortest path
+// this will be something similar to level order traversal (like BFS)
 // apply BFS from every node -> find smallest cycle length starting and ending at that node
 // do this for every node and find minimum cycle length
 
@@ -14,7 +16,7 @@
 
 
 // NOTE: since this is SHORTEST cycle => we use BFS
-// if we have ques for LONGEST cycle => we use DFS (similar logic though)
+// if we have ques for LONGEST cycle => we use DFS (similar logic though) => NP HARD problem
 
 
 class Solution {
