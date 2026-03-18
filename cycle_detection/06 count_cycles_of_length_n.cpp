@@ -1,7 +1,7 @@
 // UN-directed and connected graph
 // count cycles of length n
 
-// time complexity: O(V*V)
+// time complexity: O(V* (V+E))
 
 // APPROACH:
 // Using DFS we find every possible path of length (n-1) for a particular source (or starting point). 
