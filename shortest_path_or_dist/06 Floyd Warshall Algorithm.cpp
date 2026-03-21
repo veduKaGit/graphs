@@ -47,7 +47,11 @@ public:
 	  				matrix[i][j] = 0;  //dist from itself
 			}
 		}
-	
+
+		// why K wala loop outermost?
+		// dp[i][j] = shortest distance from i → j using only nodes {0,1,...,k} as intermediates
+		// VVIMP dp definition => dp[i][j] keeps changing with every iteration on k
+		// so as per dp logic, before processing k, all distances are already computed using {0...k-1}
 		for (int k = 0; k < n; k++) {  //VVIMP => K wala loop bahar
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
