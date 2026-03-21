@@ -7,6 +7,10 @@
 // 4. here the adj should be of the form vector<vector<pair<int,int>>>adj.....basically vector of vector of a pair
 
 // O(E log V), where E is the number of edges and V is the number of vertices in the graph
+// why so?
+// Taking nodes out of a min heap (priority queue) => log(V)
+// For each node, checking all its neighbors (edges) => O(E) on average for whole dijkstra => we might visit an edge more than once => but that case would most likely be a constant O(1) value
+// Updating distances and pushing again into the heap => log(V)
 
 #include<bits/stdc++.h>
 using namespace std;
